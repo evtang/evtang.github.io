@@ -16,3 +16,6 @@ else if(isEvening){
     welcome.textContent = "Good Evening!"
 }
 
+const key = "It's a secret to everybody."
+localStorage.setItem( key, "The One Piece is Real")
+
