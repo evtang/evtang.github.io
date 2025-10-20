@@ -60,4 +60,24 @@ setInterval(() => {
 }, 5000)
 
 
+const input = document.querySelector('#new-todo')
+const addButton = document.querySelector('#add-button')
+const todoList = document.querySelector('.todo-list')
+
+const todos = JSON.parse(localStorage.getItem('todo-list')) || []
+
+const renderTodos = () => {
+    todoList.innerHTML = '';
+    todos.forEach(todo => {
+        const li = document.createElement('li');
+        li.textContent = todo.text
+        todoList.append(li);
+    })
+}
+
+addButton.addEventListener('click', () => {
+    todos.push({ text: input.value, completed: false });
+    localStorage.setItem('.todo-list', JSON.stringify(todos));
+    renderTodos();
+})
 
