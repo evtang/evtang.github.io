@@ -84,17 +84,20 @@ addButton.addEventListener('click', () => {
 
 
 const getRandomPokemon = async () => {
-    const url = 'https://pokeapi.co/api/v2/pokemon/' + Math.floor(Math.random() * 150)
-    const result = await fetch(url);
-    const pokemon = await result.json();
-    return renderPokemon(pokemon);
-}
+  const url = 'https://pokeapi.co/api/v2/pokemon/' + (Math.floor(Math.random() * 150) + 1);
+  const result = await fetch(url);
+  const pokemon = await result.json();
+  renderPokemon(pokemon);
+};
 
-const renderPokemon = (pokemonSprite) => {
-const parentElement = document.querySelector('.pokemon-picker')
-const img = document.createElement('img')
-img.src = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/6.png"
-img.alt = pokemonSprite.name;
-parentElement.append(img);
-}
+const renderPokemon = (pokemonData) => {
+  const parentElement = document.querySelector('.pokemon-picker');
+  parentElement.innerHTML = '';
+
+  const img = document.createElement('img');
+  img.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonData.id}.png`;
+  img.alt = pokemonData.name;
+  parentElement.append(img);
+};
+
 getRandomPokemon();
