@@ -101,3 +101,7 @@ const renderPokemon = (pokemonData) => {
 };
 
 getRandomPokemon();
+
+
+
+
