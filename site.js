@@ -102,6 +102,10 @@ const renderPokemon = (pokemonData) => {
 
 getRandomPokemon();
 
-
-
+ document.getElementById('joke-button').addEventListener('click', async () => {
+            const result = await fetch('/api/v1/random-joke');
+            const data = await result.json();
+            document.getElementById('joke').textContent = data.joke;
+            document.getElementById('punchline').textContent = data.punchline;
+        });
 
